@@ -57,17 +57,7 @@ export default {
         mapUrl: sourcemapConfig.mapUrl,
         mapEncrypt: sourcemapConfig.mapEncrypt,
         mapName: sourcemapConfig.mapName,
-        desc: `"TypeError: this.props.callback is not a function
-    at t.close (http://127.0.0.1:8887/index.js:20:182335)
-    at t.close (http://127.0.0.1:8887/index.js:20:184596)
-    at HTMLUnknownElement.o (http://127.0.0.1:8887/index.js:6:45443)
-    at Object.r.invokeGuardedCallback (http://127.0.0.1:8887/index.js:6:45548)
-    at o (http://127.0.0.1:8887/index.js:6:42229)
-    at Object.executeDispatchesInOrder (http://127.0.0.1:8887/index.js:6:44200)
-    at h (http://127.0.0.1:8887/index.js:6:29078)
-    at v (http://127.0.0.1:8887/index.js:6:29204)
-    at Array.forEach (<anonymous>)
-    at e.exports (http://127.0.0.1:8887/index.js:20:26753)"`
+        desc: ''
       },
       errorTitle: '',
       activeName: 0,
@@ -86,6 +76,9 @@ export default {
   },
   methods: {
     submitForm () {
+      if (!this.form.desc || !this.form.mapName) {
+        return
+      }
       // get call stack
       const stacks = sourcemapStack.getStackByError(this.form.desc)
       // add map url
@@ -139,8 +132,11 @@ export default {
 }
 
 .back {
-  text-align:left;
-  margin-bottom:10px;
+  text-align: center;
+  background-color: #ddd;
+  color: #000;
+  height: 25px;
+  font-size: 20px;
 }
 .submitBtn {
   width:100%;

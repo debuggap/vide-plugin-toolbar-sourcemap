@@ -5,7 +5,7 @@ export default ({editor, store, view, packageInfo, ace, baseClass}) => {
   global.ace = ace
   // add item to toolbar
   store.dispatch('toolbar/addItem', {
-    name: 'vide-plugin-toolbar-sourcemap',
+    name: 'map',
     desc: 'debug online js bug',
     key: 'videPluginToolbarSourcemapItem',
     icon: '',
