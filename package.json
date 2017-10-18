@@ -17,6 +17,10 @@
     "toolbar-sourcemap"
   ],
   "vide": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:debuggap/vide-plugin-toolbar-sourcemap.git"
+  },
   "dependencies": {
     "sourcemap-stack": "^0.0.3"
   },
