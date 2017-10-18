@@ -20,11 +20,14 @@ export default {
   position: absolute;
   border: 1px solid #ccc;
   width: 600px;
-  height: 500px;
+  height: 550px;
   left: 50%;
   top: 50%;
   margin-left: -300px;
-  margin-top: -250px;
+  margin-top: -275px;
   background-color: #fff;
+  padding:10px;
+  border-radius: 10px;
+  overflow:auto
 }
 </style>

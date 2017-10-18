@@ -27,7 +27,7 @@
       </el-form-item>
       <el-form-item>
         <el-input type="hidden" name="_csrf" v-model="form._csrf" />
-        <el-button type="primary" @click="submitForm('form')" class="submitBtn">提交</el-button>
+        <el-button type="primary" @click="submitForm('form')" class="submitBtn">分析</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
+import {Collapse, CollapseItem, Alert, Form, FormItem, Input, Button} from 'element-ui'
 import EditorItem from './EditorItem'
 import sourcemapStack from 'sourcemap-stack'
 
@@ -57,8 +57,17 @@ export default {
         mapUrl: sourcemapConfig.mapUrl,
         mapEncrypt: sourcemapConfig.mapEncrypt,
         mapName: sourcemapConfig.mapName,
-        desc: '',
-        _csrf: Cookie.get('csrfToken')
+        desc: `"TypeError: this.props.callback is not a function
+    at t.close (http://127.0.0.1:8887/index.js:20:182335)
+    at t.close (http://127.0.0.1:8887/index.js:20:184596)
+    at HTMLUnknownElement.o (http://127.0.0.1:8887/index.js:6:45443)
+    at Object.r.invokeGuardedCallback (http://127.0.0.1:8887/index.js:6:45548)
+    at o (http://127.0.0.1:8887/index.js:6:42229)
+    at Object.executeDispatchesInOrder (http://127.0.0.1:8887/index.js:6:44200)
+    at h (http://127.0.0.1:8887/index.js:6:29078)
+    at v (http://127.0.0.1:8887/index.js:6:29204)
+    at Array.forEach (<anonymous>)
+    at e.exports (http://127.0.0.1:8887/index.js:20:26753)"`
       },
       errorTitle: '',
       activeName: 0,
@@ -66,7 +75,14 @@ export default {
     }
   },
   components: {
-    EditorItem
+    EditorItem,
+    'el-alert': Alert,
+    'el-form': Form,
+    'el-form-item': FormItem,
+    'el-input': Input,
+    'el-button': Button,
+    'el-collapse': Collapse,
+    'el-collapse-item': CollapseItem
   },
   methods: {
     submitForm () {
@@ -99,9 +115,9 @@ export default {
     handleChange () {
       for (let i = 0; i < this.activeName.length; i++) {
         let key = this.activeName[i]
-        if (document.querySelector('#editor' + key)) {
+        if (global.ace.edit('editor' + key)) {
           setTimeout(() => {
-            window.ace.edit('editor' + key).centerSelection()
+            global.ace.edit('editor' + key).centerSelection()
           }, 500)
         }
       }

@@ -17,11 +17,14 @@ export default {
   },
   mounted () {
     if (this.content) {
-      let editor = window.ace.edit(this.editorId)
+      let editor = global.ace.edit(this.editorId)
       editor.setValue(this.content)
       editor.$blockScrolling = Infinity
       editor.session.setMode('ace/mode/javascript')
-      editor.gotoLine(this.row)
+      setTimeout(() => {
+        editor.gotoLine(this.row)
+        editor.centerSelection()
+      }, 500)
       editor.setReadOnly(true)
     }
   }
