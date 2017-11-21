@@ -1,6 +1,6 @@
 {
   "name": "vide-plugin-toolbar-sourcemap",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "debug online js bug",
   "author": "vic.wang163",
   "scripts": {
