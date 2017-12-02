@@ -1,6 +1,6 @@
 {
   "name": "vide-plugin-toolbar-sourcemap",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "debug online js bug",
   "author": "vic.wang163",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "git@github.com:debuggap/vide-plugin-toolbar-sourcemap.git"
   },
   "dependencies": {
-    "sourcemap-stack": "^0.0.3"
+    "sourcemap-stack": "^0.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
